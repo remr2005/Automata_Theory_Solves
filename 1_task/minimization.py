@@ -4,35 +4,41 @@ from collections import defaultdict
 def minimization(automata: MealyAutomata):
     reactions = {}
     # Собираем уникальные реакции
-    ind = 0
+    ind = 1
     table = automata.table
-    alphabet = automata.alphabet
     old_states_to_new = {}
     for s, i in table.items():
         reaction = tuple(i[a][1] for a in automata.alphabet) # Используем tuple вместо list
         if reaction not in reactions:
             reactions[reaction] = f"A{ind}"
             ind+=1
-        old_states_to_new[s] =f"A{ind}"
-    
+    for s, i in table.items():
+        reaction = tuple(i[a][1] for a in automata.alphabet)
+        old_states_to_new[s] = reactions[reaction]
+
     table1= defaultdict(dict)
     for s, i in table.items():
-        for a in alphabet:
+        for a in automata.alphabet:
             table1[s][a] = old_states_to_new[table[s][a][0]]
-    table2 = table1
+    
+    table2 = defaultdict(dict)
+    ind2 = 66
     while True:
         old_states_to_new1 = {}
         reactions1 ={}
-        ind = 0
+        ind = 1
         for s, i in table1.items():
             reaction1 = tuple(j for _,j in i.items())
             if reaction1 not in reactions1:
-                reactions1[reaction1] = f"B{ind}"
+                reactions1[reaction1] = f"{chr(ind2)}{ind}"
                 ind+=1
-            old_states_to_new1[s] =f"B{ind}"
+        for s, i in table1.items():
+            reaction1 = tuple(j for _,j in i.items())
+            old_states_to_new1[s] = reactions1[reaction1]
         for s, i in table.items():
             for a in alphabet:
                 table1[s][a] = old_states_to_new1[table[s][a][0]]
+        ind2+=1       
         if table1 == table2:
             break
         table2 = table1
