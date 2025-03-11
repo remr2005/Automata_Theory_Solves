@@ -42,8 +42,16 @@ def minimization(automata: MealyAutomata):
         if table1 == table2:
             break
         table2 = table1
-    print(old_states_to_new1)
-    print(table1)
+    new_to_old = {j:i for i,j in old_states_to_new1.items()}
+    table2= defaultdict(dict)
+    for s, i in table.items():
+        for a in alphabet:
+            table2[old_states_to_new1[s]][a] = (table1[s][a], table[s][a][1])
+    table3 =defaultdict(dict)
+    for s,i in table2.items():
+        for a in alphabet:
+            table3[new_to_old[s]][a] = (new_to_old[table2[s][a][0]], table2[s][a][1])
+    return table3
 
 
 
