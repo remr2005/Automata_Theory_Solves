@@ -2,7 +2,7 @@
 from base_automata import BaseAutomata
 
 class MoorAutomata(BaseAutomata):
-    """Realisation of Mili Automata"""
+    """Realisation of Moor Automata"""
     def __init__(self, states: list[str],
                  initial_state: str,
                  alphabet: list[str],
@@ -18,4 +18,7 @@ class MoorAutomata(BaseAutomata):
 
     def get_reaction(self):
         """Return reaction"""
-        return self.table_reactions[self.state]
+        try:
+            return self.table_reactions[self.state]
+        except:
+            return ""
