@@ -8,5 +8,5 @@ class BaseAutomata:
         if initial_state not in states:
             raise ValueError("Initial state must be in states")
         self.states = states
-        self.initial_state = initial_state
+        self.state = initial_state
         self.alphabet = alphabet
