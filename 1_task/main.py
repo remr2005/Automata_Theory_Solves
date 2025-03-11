@@ -20,7 +20,9 @@ def main():
 
     # Создаем объект автомата
     mealy = MealyAutomata(states, initial_state, alphabet, table)
-    mealy_to_moor(mealy)
+    moor = mealy_to_moor(mealy)
+    print(moor.table)
+    print(moor.table_reactions)
 
 if __name__ == "__main__":
     main()
