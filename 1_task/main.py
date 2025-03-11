@@ -1,6 +1,6 @@
 """Modules"""
-from mili_automata import MiliAutomata
-from mure_automata import MureAutomata
+from mealy_automata import MealyAutomata
+from moor_automata import MoorAutomata
 
 def main():
     """Main function"""
@@ -18,8 +18,22 @@ def main():
     }
 
     # Создаем объект автомата
-    automata = MiliAutomata(states, initial_state, alphabet, table)
-    print(automata.step("a"))
+    mealy = MealyAutomata(states, initial_state, alphabet, table)
+    print(mealy.step("a"))
+    table = {
+        "q0": {"a": "q1", "b": "q2"},
+        "q1": {"a": "q2", "b": "q0"},
+        "q2": {"a": "q0", "b": "q1"}
+    }
+    # Таблица реакций
+    table_reactions = {
+        "q0": "Reaction 0",
+        "q1": "Reaction 1",
+        "q2": "Reaction 2"
+    }
+    moor = MoorAutomata(states, initial_state,alphabet,table,table_reactions)
+    moor.step("a")
+    print(moor.get_reaction())
 
 if __name__ == "__main__":
     main()

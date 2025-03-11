@@ -1,8 +1,8 @@
 """Import base modules"""
 from base_automata import BaseAutomata
 
-class MiliAutomata(BaseAutomata):
-    """Realisation of Mili Automata"""
+class MealyAutomata(BaseAutomata):
+    """Realisation of Mealy Automata"""
     def __init__(self, states: list[str],
                  initial_state: str,
                  alphabet: list[str],

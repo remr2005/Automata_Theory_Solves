@@ -1,7 +1,7 @@
 """Import base modules"""
 from base_automata import BaseAutomata
 
-class MureAutomata(BaseAutomata):
+class MoorAutomata(BaseAutomata):
     """Realisation of Mili Automata"""
     def __init__(self, states: list[str],
                  initial_state: str,
