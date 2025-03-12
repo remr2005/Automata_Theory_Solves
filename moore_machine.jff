@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!--Created with JFLAP 7.1.--><structure>
+	<type>moore</type>
+	<automaton>
+		<!--The list of states.-->
+		<state id="0" name="q0">
+			<x>75.0</x>
+			<y>60.0</y>
+			<initial/>
+			<output>x</output>
+		</state>
+		<state id="1" name="q1">
+			<x>259.0</x>
+			<y>65.0</y>
+			<output>y</output>
+		</state>
+		<state id="2" name="q2">
+			<x>94.0</x>
+			<y>356.0</y>
+			<output>y</output>
+		</state>
+		<state id="3" name="q3">
+			<x>356.0</x>
+			<y>384.0</y>
+			<output>x</output>
+		</state>
+		<state id="4" name="q4">
+			<x>402.0</x>
+			<y>506.0</y>
+			<output>y</output>
+		</state>
+		<state id="5" name="q5">
+			<x>461.0</x>
+			<y>224.0</y>
+			<output>y</output>
+		</state>
+		<state id="6" name="q6">
+			<x>190.0</x>
+			<y>611.0</y>
+			<output>-</output>
+		</state>
+		<!--The list of transitions.-->
+		<transition>
+			<from>3</from>
+			<to>0</to>
+			<read>b</read>
+			<transout>x</transout>
+		</transition>
+		<transition>
+			<from>5</from>
+			<to>4</to>
+			<read>a</read>
+			<transout>y</transout>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>5</to>
+			<read>a</read>
+			<transout>y</transout>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>3</to>
+			<read>b</read>
+			<transout>x</transout>
+		</transition>
+		<transition>
+			<from>5</from>
+			<to>1</to>
+			<read>b</read>
+			<transout>y</transout>
+		</transition>
+		<transition>
+			<from>4</from>
+			<to>3</to>
+			<read>a</read>
+			<transout>x</transout>
+		</transition>
+		<transition>
+			<from>6</from>
+			<to>3</to>
+			<read>a</read>
+			<transout>x</transout>
+		</transition>
+		<transition>
+			<from>3</from>
+			<to>5</to>
+			<read>a</read>
+			<transout>y</transout>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>2</to>
+			<read>b</read>
+			<transout>y</transout>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>2</to>
+			<read>b</read>
+			<transout>y</transout>
+		</transition>
+		<transition>
+			<from>2</from>
+			<to>0</to>
+			<read>b</read>
+			<transout>x</transout>
+		</transition>
+		<transition>
+			<from>0</from>
+			<to>0</to>
+			<read>a</read>
+			<transout>x</transout>
+		</transition>
+		<transition>
+			<from>1</from>
+			<to>0</to>
+			<read>a</read>
+			<transout>x</transout>
+		</transition>
+		<transition>
+			<from>6</from>
+			<to>2</to>
+			<read>b</read>
+			<transout>y</transout>
+		</transition>
+	</automaton>
+</structure>
