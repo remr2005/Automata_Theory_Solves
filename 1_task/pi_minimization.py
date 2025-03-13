@@ -2,17 +2,15 @@
 from collections import defaultdict
 from copy import deepcopy
 from mealy_automata import MealyAutomata
-from moor_automata import MoorAutomata
-from transformation import mealy_to_moor
 
-def pi_minimization(automata_: MealyAutomata):
+def pi_minimization(automata_: MealyAutomata) -> MealyAutomata:
     """Pi-minimization"""
     automata = deepcopy(automata_)
     # Находим таблицу реакций и переходов, а так же все уникальные столбцы реакций
     table_trans = {s:{a_n:i[0] for a_n, i in a.items()} for s,a in automata.table.items()}
     table_react = {s:{a_n:i[1] for a_n, i in a.items()} for s,a in automata.table.items()}
     unikal_reactions = list(set(tuple(j for _,j in a.items()) for _, a in table_react.items()))
-    
+
     # Разделяем состояния по реакциям
     reactions = defaultdict(dict)
     reactions_ = {}
@@ -47,8 +45,8 @@ def pi_minimization(automata_: MealyAutomata):
         if len(temp_reactions.keys()) == len(reactions.keys()):
             break
         reactions = temp_reactions
-        reactions_ = temp_reactions_ 
-    
+        reactions_ = temp_reactions_
+
     # Возвращаем первоночальные состояния и убираем эквивалентые
     dt = {}
     dt_ = {}

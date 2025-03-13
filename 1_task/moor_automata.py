@@ -16,7 +16,7 @@ class MoorAutomata(BaseAutomata):
         """Machine step"""
         self.state = self.table[self.state][inp]
 
-    def get_reaction(self):
+    def get_reaction(self) -> str:
         """Return reaction"""
         try:
             return self.table_reactions[self.state]
