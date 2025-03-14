@@ -5,6 +5,7 @@ from transformation import mealy_to_moor
 from pi_minimization import pi_minimization
 from to_jflap_mealy import convert_mealy_to_jflap
 from to_jflap_moor import convert_moor_to_jflap
+from transformation2 import from_mealy_to_moor
 
 def main():
     """Main function"""
@@ -20,6 +21,7 @@ def main():
         "9": {"a": ["2", "y"], "b": ["5", "x"]}
     }
 
+    string = "abba"
     # Список состояний
     states = list(table.keys())
 
@@ -30,14 +32,15 @@ def main():
     alphabet = ["a", "b"]
 
     automata = MealyAutomata(states, initial_state, alphabet, table)
-    print("Результат работы над строчкой 'abba' автомата Мили "+"".join([automata.step(i) for i in "abba"]))
+    print("Результат работы над строчкой 'abba' автомата Мили "+"".join([automata.step(i) for i in string]))
 
     automata_minim = pi_minimization(automata)
-    print("Результат работы над строчкой 'abba' нормализованного автомата Мили "+"".join([automata_minim.step(i) for i in "abba"]))
+    print("Результат работы над строчкой 'abba' нормализованного автомата Мили "+"".join([automata_minim.step(i) for i in string]))
 
     res = ""
-    moor = mealy_to_moor(automata)
-    for i in "abba":
+    moor = from_mealy_to_moor(automata_minim)
+    print(moor.states)
+    for i in string:
         moor.step(i)
         res += moor.get_reaction()
     print(f"Результат работы над строчкой 'abba' автомата Мура {res}")
